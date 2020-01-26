@@ -1,0 +1,31 @@
+.top-bar {
+    color: $white;
+
+    button,
+    [type="submit"],
+    [type="button"] {
+        color: $white;
+        border: 1px solid $white;
+        border-radius: $global-radius;
+        background-color: transparent;
+        font-size: 80%;
+        margin: 0 1rem 0 1rem;
+        padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+
+        &:hover {
+            background-color: $active-color;
+            border-color: $active-color;
+        }
+    }
+
+    h4 {
+        margin: 0.3rem 0 0.3rem 0;
+        opacity: 0.9;
+    }
+}
+
+.top-bar-title {
+    color: #adadad;
+    letter-spacing: 1px;
+    font-weight: 600;
+}

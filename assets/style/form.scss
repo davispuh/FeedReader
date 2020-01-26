@@ -1,0 +1,53 @@
+form {
+
+    button,
+    [type="submit"],
+    [type="button"] {
+        border: 1px solid $white;
+        border-radius: $global-radius;
+        color: $white;
+        background-color: transparent;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: 100%;
+        padding: 1rem;
+        transition: all ease 0.4s;
+
+        &:hover {
+            background-color: $active-color;
+            border-color: $active-color;
+        }
+    }
+
+    button.close-button {
+        padding: 0;
+        border: 0;
+        width: initial;
+        color: #663300;
+
+        &:hover,
+        &:focus {
+            color: $black;
+            background-color: transparent;
+        }
+    }
+
+    #{text-inputs()} {
+        border-radius: $global-radius;
+        opacity: 0.25;
+        transition: all ease 0.4s;
+
+        &:focus {
+            opacity: 0.85;
+        }
+    }
+
+    label {
+        text-transform: uppercase;
+        color: #adadad;
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+}

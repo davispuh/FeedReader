@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ app.request.locale }}">
+    <head>
+        {% block head %}
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>{% block title %}A simple feed reader{% endblock %}</title>
+            <link rel="icon" type="image/png" href="{{ asset('images/news.png') }}" />
+            {% block resources %}
+            {% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        {% verbatim %}
+            <div id="app"></div>
+        {% endverbatim %}
+
+        {% block content %}
+        {% endblock %}
+
+        <script type="application/javascript">
+            App.run("#app");
+        </script>
+    </body>
+</html>

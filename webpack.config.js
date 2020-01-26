@@ -23,9 +23,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
+    .addEntry('Unauthenticated', './assets/pages/Unauthenticated.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -53,8 +51,15 @@ Encore
         config.corejs = 3;
     })
 
+    .configureBabel((babelConfig) => {
+        babelConfig.plugins.push('@babel/plugin-proposal-class-properties');
+    })
+
     // enables Sass/SCSS support
-    .enableSassLoader()
+    .enableSassLoader((options) => {
+         // needed for importing 'foundation-sites/scss/settings/_settings'
+        options.includePaths = ["./node_modules/foundation-sites/scss"]
+     })
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()

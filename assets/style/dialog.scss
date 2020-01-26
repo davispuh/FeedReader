@@ -1,0 +1,19 @@
+.dialog {
+    padding: 2rem 1.5em;
+    border-radius: 0.5rem;
+    background-color: #3d454f;
+
+    h4 {
+        color: $white;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+}
+
+.callout {
+    h6 {
+        margin: 0;
+        color: $black;
+    }
+}
