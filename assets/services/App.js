@@ -1,5 +1,5 @@
 
-import Vue from 'vue'
+import { createApp } from 'vue'
 import AppComponent from '../modules/App/App'
 
 class App {

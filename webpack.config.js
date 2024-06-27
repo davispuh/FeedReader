@@ -57,8 +57,8 @@ Encore
 
     // enables Sass/SCSS support
     .enableSassLoader((options) => {
-         // needed for importing 'foundation-sites/scss/settings/_settings'
-        options.includePaths = ["./node_modules/foundation-sites/scss"]
+        // needed for importing 'foundation-sites/scss/settings/_settings'
+        options.sassOptions.includePaths = ["./node_modules/foundation-sites/scss"]
      })
 
     // uncomment if you use TypeScript
