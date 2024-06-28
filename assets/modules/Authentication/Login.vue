@@ -58,13 +58,20 @@
         methods: {
             async login() {
                 await this.authenticate(this.email, this.password);
+            },
+            async authenticate(email, password) {
+                // this is just a placeholder, actual implementation in store
+            }
+        },
+        computed: {
+            error() {
+                // this is just a placeholder, actual implementation in store
             }
         },
         data() {
             return {
                 email: "",
-                password: "",
-                error: ""
+                password: ""
             };
         }
     };

@@ -3,19 +3,20 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Routing\Attribute\Route;
 
 class FeedsController extends AbstractController
 {
     /**
-     * @Route("/", name="feeds")
+     * @Route("/", name="main")
      */
-    public function index(): Response
+    #[Route('/')]
+    public function index(AuthenticationUtils $authenticationUtils): Response
     {
-        if (/* todo */ true) {
-            return $this->login();
+        if (!$this->getUser()) {
+            return $this->login($authenticationUtils);
         }
 
         return $this->feeds();
@@ -23,11 +24,35 @@ class FeedsController extends AbstractController
 
     private function feeds()
     {
-        return $this->render('feeds.html.twig');
+        $appState = ["authentication" => [
+            "isAuthenticated" => true,
+            "user" => ["email" => $this->getUser()->getUsername()]
+        ]];
+        return $this->render('feeds.html.twig', ['appState' => $appState]);
     }
 
-    private function login()
+    private function login(AuthenticationUtils $authenticationUtils)
     {
-        return $this->render('unauthenticated.html.twig');
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        $errorMessage = "";
+        if ($error) {
+            $errorMessage = $error->getMessageKey();
+        }
+        $appState = ["authentication" => ["isAuthenticated" => false, "error" => $errorMessage]];
+        $data = ["login" => ["email" => $lastUsername]];
+
+        return $this->render('unauthenticated.html.twig', ['appState' => $appState, 'data' => $data]);
+    }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+        throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
 }

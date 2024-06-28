@@ -1,15 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block resources %}
-    {{ encore_entry_link_tags('Unauthenticated') }}
-    {{ encore_entry_script_tags('Unauthenticated') }}
+    {{ encore_entry_link_tags('Feeds') }}
+    {{ encore_entry_script_tags('Feeds') }}
 {% endblock %}
 
 {% block content %}
     {% if appState %}
         <script type="application/javascript">
             App.setState(JSON.parse('{{ appState|json_encode()|e("js") }}'));
-            App.setData(JSON.parse('{{ data|json_encode()|e("js") }}'));
         </script>
     {% endif %}
 {% endblock %}

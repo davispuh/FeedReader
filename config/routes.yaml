@@ -1,3 +1,7 @@
-index:
+#index:
+#    path: /
+#    controller: App\Controller\FeedsController::index
+login:
     path: /
-    controller: App\Controller\FeedsController::index
+    controller: App\Controller\SecurityController::login
+    methods: POST

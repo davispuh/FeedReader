@@ -1,7 +1,7 @@
 
 import Store from "./store"
 import Login from "./Login"
-import { mapActions } from "vuex";
+import { mapState } from "vuex";
 
 class Authentication {
     constructor(options = {}) {
@@ -11,7 +11,8 @@ class Authentication {
         options = Object.assign(defaultOptions, options)
         this.store = new Store(this, options.storeName)
         this.login = Login
-        this.login.methods.authenticate = this.store.authenticate.bind(this.store);
+        this.login.methods.authenticate = this.store.authenticate.bind(this.store)
+        Object.assign(this.login.computed, mapState(this.store.name, ["error"]))
     }
 
     async authenticate(email, password) { return null }

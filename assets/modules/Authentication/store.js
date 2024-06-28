@@ -9,6 +9,7 @@ class Store {
             state() {
                 return {
                     isAuthenticated: false,
+                    error: "",
                     user: {
                         email: null
                     }
